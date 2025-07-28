@@ -1,0 +1,239 @@
+/* Notifications Page Styles */
+
+.notifications-page {
+  padding: 2rem 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.notifications-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.notifications-header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.notification-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.notifications-loading,
+.notifications-error,
+.no-notifications {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  text-align: center;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.notifications-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.notification-item-full {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.notification-item-full:hover {
+  background-color: #f5f5f5;
+  transform: translateY(-2px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.notification-item-full.unread {
+  border-left: 4px solid #0d6efd;
+  background-color: #f0f7ff;
+}
+
+.notification-content {
+  display: flex;
+  flex: 1;
+  gap: 0.75rem;
+}
+
+.notification-text {
+  flex: 1;
+}
+
+.unread-badge {
+  margin-right: 0.5rem;
+}
+
+.notification-timestamp {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 0.25rem;
+}
+
+.notification-actions {
+  display: flex;
+  gap: 0.5rem;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.2s ease;
+}
+
+.notification-item-full:hover .notification-actions {
+  visibility: visible;
+  opacity: 1;
+}
+
+.action-button {
+  padding: 0.25rem 0.5rem;
+}
+
+.load-more-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.load-more-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 2rem;
+}
+
+@media (max-width: 768px) {
+  .notifications-page {
+    padding: 1rem;
+  }
+  
+  .notifications-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .notification-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .filter-buttons {
+    width: 100%;
+  }
+  
+  .filter-button,
+  .mark-all-read-button {
+    flex: 1;
+  }
+  
+  .notification-item-full {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .notification-actions {
+    width: 100%;
+    visibility: visible;
+    opacity: 1;
+    justify-content: flex-end;
+  }
+}
+
+/* Database error styles */
+.database-error {
+  text-align: center;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 2rem 0;
+}
+
+.database-error .error-icon {
+  font-size: 3rem;
+  color: #f0ad4e;
+  margin-bottom: 1rem;
+}
+
+.database-error h2 {
+  color: #14213d;
+  margin-bottom: 1rem;
+}
+
+.database-error p {
+  margin-bottom: 1rem;
+  color: #666;
+}
+
+.database-error ul {
+  text-align: left;
+  display: inline-block;
+  margin: 1rem 0;
+  color: #666;
+}
+
+.database-error .retry-button {
+  margin-top: 1rem;
+  background-color: #fca311;
+  border-color: #fca311;
+  color: #14213d;
+  font-weight: 500;
+  padding: 0.5rem 1.25rem;
+}
+
+.database-error .retry-button:hover {
+  background-color: #e69100;
+  border-color: #e69100;
+}
+
+.database-warning {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}
+
+.database-warning svg {
+  margin-right: 0.5rem;
+  color: #f0ad4e;
+}
+
+.database-warning span {
+  flex: 1;
+}
+
+.database-warning .retry-button {
+  white-space: nowrap;
+  margin-left: 1rem;
+} 

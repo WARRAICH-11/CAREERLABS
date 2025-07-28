@@ -1,0 +1,205 @@
+name: CAREERLABS CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    
+    services:
+      mongodb:
+        image: mongo:latest
+        ports:
+          - 27017:27017
+    
+    strategy:
+      matrix:
+        node-version: [16.x]
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      
+      - name: Install Backend Dependencies
+        run: |
+          cd backend
+          npm ci
+      
+      - name: Run Backend Tests
+        run: |
+          cd backend
+          npm test
+        env:
+          NODE_ENV: test
+          JWT_SECRET: test_jwt_secret
+          MONGO_URI: mongodb://localhost:27017/careerlabs-test
+      
+      - name: Install Frontend Dependencies
+        run: |
+          cd frontend
+          npm ci
+      
+      - name: Run Frontend Tests
+        run: |
+          cd frontend
+          npm test
+        env:
+          CI: true
+
+  build:
+    name: Build
+    needs: test
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: 'npm'
+      
+      - name: Install Frontend Dependencies
+        run: |
+          cd frontend
+          npm ci
+      
+      - name: Build Frontend
+        run: |
+          cd frontend
+          npm run build
+        env:
+          CI: false
+          REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
+      
+      - name: Upload Frontend Build Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: frontend-build
+          path: frontend/build
+      
+      - name: Install Backend Dependencies
+        run: |
+          cd backend
+          npm ci
+      
+      - name: Upload Backend Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: backend
+          path: |
+            backend/
+            !backend/node_modules
+
+  deploy-staging:
+    name: Deploy to Staging
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
+    runs-on: ubuntu-latest
+    environment:
+      name: staging
+      url: ${{ steps.deploy-to-heroku.outputs.webapp-url }}
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Download Frontend Build
+        uses: actions/download-artifact@v3
+        with:
+          name: frontend-build
+          path: frontend/build
+      
+      - name: Download Backend
+        uses: actions/download-artifact@v3
+        with:
+          name: backend
+          path: backend
+      
+      - name: Deploy to Heroku (Staging)
+        id: deploy-to-heroku
+        uses: akhileshns/heroku-deploy@v3.12.14
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: "careerlabs-staging"
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+          procfile: "web: cd backend && npm ci --production && node server.js"
+          healthcheck: "https://careerlabs-staging.herokuapp.com/api/health"
+          delay: 5
+        env:
+          HD_NODE_ENV: staging
+          HD_MONGO_URI: ${{ secrets.STAGING_MONGO_URI }}
+          HD_JWT_SECRET: ${{ secrets.STAGING_JWT_SECRET }}
+          HD_EMAIL_SERVICE: ${{ secrets.EMAIL_SERVICE }}
+          HD_EMAIL_USERNAME: ${{ secrets.EMAIL_USERNAME }}
+          HD_EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          HD_EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          HD_FRONTEND_URL: "https://careerlabs-staging.herokuapp.com"
+
+  deploy-production:
+    name: Deploy to Production
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: ${{ steps.deploy-to-aws.outputs.deployment-url }}
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Download Frontend Build
+        uses: actions/download-artifact@v3
+        with:
+          name: frontend-build
+          path: frontend/build
+      
+      - name: Download Backend
+        uses: actions/download-artifact@v3
+        with:
+          name: backend
+          path: backend
+      
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+      
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+      
+      - name: Build, tag, and push image to Amazon ECR
+        id: build-image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: careerlabs
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          # Build Docker image
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          # Push Docker image
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          # Also tag as latest
+          docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:latest
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
+          echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+      
+      - name: Deploy to AWS ECS
+        id: deploy-to-aws
+        run: |
+          aws ecs update-service --cluster careerlabs-cluster --service careerlabs-service --force-new-deployment
+          echo "::set-output name=deployment-url::https://careerlabs.com" 

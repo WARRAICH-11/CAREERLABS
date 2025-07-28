@@ -1,0 +1,269 @@
+/* Admin Dashboard Styles */
+.admin-container {
+  margin: 1rem auto;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  min-height: calc(100vh - 60px);
+}
+
+.admin-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.admin-header h1 {
+  margin-bottom: 0.5rem;
+  color: #343a40;
+  font-weight: 600;
+}
+
+.admin-header p {
+  color: #6c757d;
+  margin-bottom: 0;
+}
+
+/* Stats Cards */
+.stats-cards {
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: none;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card .card-body {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+.stat-icon {
+  font-size: 2rem;
+  margin-right: 1rem;
+  color: #6c63ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background-color: rgba(108, 99, 255, 0.1);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.stat-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-content h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: #343a40;
+}
+
+.stat-content p {
+  margin-bottom: 0;
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+/* Chart Cards */
+.chart-card {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.chart-card .card-header {
+  background-color: white;
+  font-weight: 600;
+  border-bottom: 1px solid #e7e7e7;
+  padding: 1rem 1.5rem;
+}
+
+.chart-card .card-body {
+  padding: 1.5rem;
+}
+
+.pie-chart-container {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Quick Links */
+.quick-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.admin-link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  color: #495057;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.admin-link svg {
+  margin-right: 0.75rem;
+  font-size: 1.2rem;
+  color: #6c63ff;
+}
+
+.admin-link:hover {
+  background-color: #6c63ff;
+  color: white;
+}
+
+.admin-link:hover svg {
+  color: white;
+}
+
+/* User Management Table */
+.admin-table {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.admin-table th {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  font-weight: 600;
+}
+
+.admin-table td {
+  padding: 1rem;
+  vertical-align: middle;
+}
+
+.admin-table .table-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.admin-table .btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+/* Search bar */
+.admin-search {
+  margin-bottom: 1.5rem;
+}
+
+.admin-search .form-control {
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ced4da;
+  box-shadow: none;
+}
+
+.admin-search .form-control:focus {
+  border-color: #6c63ff;
+  box-shadow: 0 0 0 0.2rem rgba(108, 99, 255, 0.25);
+}
+
+/* Pagination */
+.admin-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.admin-pagination .page-item .page-link {
+  color: #6c63ff;
+  border: 1px solid #dee2e6;
+  margin: 0 0.2rem;
+}
+
+.admin-pagination .page-item.active .page-link {
+  background-color: #6c63ff;
+  border-color: #6c63ff;
+}
+
+/* Form Controls */
+.admin-form .form-control,
+.admin-form .form-select {
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ced4da;
+  margin-bottom: 1rem;
+}
+
+.admin-form .form-label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.admin-form .form-text {
+  color: #6c757d;
+  font-size: 0.875rem;
+}
+
+.admin-form .form-check-input:checked {
+  background-color: #6c63ff;
+  border-color: #6c63ff;
+}
+
+.admin-form .btn-primary {
+  background-color: #6c63ff;
+  border-color: #6c63ff;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+}
+
+.admin-form .btn-primary:hover {
+  background-color: #5a52d5;
+  border-color: #5a52d5;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .stats-cards .col-sm-6 {
+    margin-bottom: 1rem;
+  }
+  
+  .stat-card .card-body {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .stat-icon {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+  
+  .quick-links {
+    grid-template-columns: 1fr;
+  }
+  
+  .admin-table {
+    min-width: 650px;
+  }
+  
+  .table-container {
+    overflow-x: auto;
+  }
+} 

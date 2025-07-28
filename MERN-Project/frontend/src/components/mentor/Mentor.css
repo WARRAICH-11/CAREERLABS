@@ -1,0 +1,846 @@
+/* Mentor Component Styles */
+
+/* Common Styles */
+.card-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #3498db;
+  margin-top: 1rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+/* Mentor Dashboard */
+.mentor-dashboard {
+  padding: 1.5rem;
+}
+
+.dashboard-title {
+  color: #334155;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 0.75rem;
+}
+
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  height: 100%;
+  border: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.stat-icon {
+  font-size: 2rem;
+  color: #3b82f6;
+  margin-bottom: 0.75rem;
+}
+
+.stat-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.25rem;
+}
+
+.stat-label {
+  color: #64748b;
+  font-size: 0.875rem;
+  margin-bottom: 0;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.action-buttons .btn {
+  border-radius: 6px;
+  font-weight: 500;
+  padding: 10px 15px;
+  transition: all 0.3s ease;
+}
+
+.action-buttons .btn:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+  color: white;
+}
+
+.session-card {
+  margin-bottom: 1rem;
+  border-left: 4px solid #3498db;
+}
+
+.task-card {
+  margin-bottom: 0.5rem;
+  border-left: 4px solid #e74c3c;
+}
+
+.feedback-card {
+  border-left: 4px solid #2ecc71;
+  margin-bottom: 0.5rem;
+}
+
+.feedback-rating {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.rating-5 {
+  color: #2ecc71;
+}
+
+.rating-4 {
+  color: #27ae60;
+}
+
+.rating-3 {
+  color: #f39c12;
+}
+
+.rating-2, .rating-1 {
+  color: #e74c3c;
+}
+
+/* Mentor Registration */
+.mentor-registration-card {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 10px;
+}
+
+.mentor-registration-card .card-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+  padding: 1.5rem;
+  border-radius: 10px 10px 0 0;
+}
+
+.skills-section {
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  padding: 1rem;
+  background-color: #f8f9fa;
+}
+
+.skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-tag {
+  background-color: rgba(0, 123, 255, 0.1);
+  color: #007bff;
+  border-radius: 20px;
+  padding: 5px 15px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  display: inline-block;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+  background-color: rgba(0, 123, 255, 0.2);
+}
+
+.availability-section {
+  padding: 1rem 0;
+}
+
+.availability-header h4 {
+  color: #334155;
+  font-weight: 600;
+}
+
+.availability-grid {
+  display: grid;
+  grid-template-columns: 80px repeat(7, 1fr);
+  gap: 2px;
+  margin-bottom: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.day-header, .time-header {
+  background-color: #f8fafc;
+  padding: 0.75rem 0.5rem;
+  text-align: center;
+  font-weight: 600;
+  color: #475569;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.time-label {
+  background-color: #f8fafc;
+  padding: 0.5rem;
+  text-align: right;
+  color: #475569;
+  font-size: 0.8125rem;
+  border-right: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.time-slot {
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.time-slot:hover {
+  background-color: #f1f5f9;
+}
+
+.time-slot.selected {
+  background-color: #3b82f6;
+  border-color: #2563eb;
+}
+
+/* Mentor Session Scheduling */
+.schedule-calendar {
+  margin-bottom: 2rem;
+}
+
+.session-type-selector {
+  margin-bottom: 1.5rem;
+}
+
+.session-timeslots {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.timeslot {
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  padding: 0.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.timeslot:hover {
+  background-color: #e9ecef;
+}
+
+.timeslot.selected {
+  background-color: #3498db;
+  color: white;
+  border-color: #3498db;
+}
+
+.timeslot.unavailable {
+  background-color: #f8f9fa;
+  color: #adb5bd;
+  cursor: not-allowed;
+}
+
+/* Mentor Profile Page */
+.mentor-profile {
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+.mentor-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.mentor-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 2rem;
+  border: 4px solid #f1f5f9;
+}
+
+.mentor-name {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.25rem;
+}
+
+.mentor-title {
+  color: #64748b;
+  font-size: 1.125rem;
+  margin-bottom: 0.75rem;
+}
+
+.mentor-rating {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.mentor-info {
+  margin-bottom: 2rem;
+}
+
+.info-label {
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 0.25rem;
+}
+
+.info-value {
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+.skill-tag {
+  background-color: #f1f5f9;
+  color: #475569;
+  border-radius: 2rem;
+  padding: 0.375rem 0.75rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+  font-size: 0.875rem;
+}
+
+.review-card {
+  background-color: #f8fafc;
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid #e2e8f0;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.review-user {
+  display: flex;
+  align-items: center;
+}
+
+.review-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 0.75rem;
+}
+
+.review-content {
+  color: #334155;
+  font-style: italic;
+}
+
+.booking-section {
+  background-color: #f8fafc;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  border: 1px solid #e2e8f0;
+}
+
+.booking-title {
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 1rem;
+}
+
+.time-slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.time-slot-btn {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem;
+  background-color: white;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.time-slot-btn:hover {
+  background-color: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+.time-slot-btn.selected {
+  background-color: #3b82f6;
+  color: white;
+  border-color: #2563eb;
+}
+
+.time-slot-btn.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #e2e8f0;
+}
+
+.session-topic {
+  margin-bottom: 1rem;
+}
+
+/* Tabs styling */
+.nav-tabs {
+  border-bottom: 2px solid #e2e8f0;
+  margin-bottom: 1.5rem;
+}
+
+.nav-tabs .nav-link {
+  color: #64748b;
+  font-weight: 500;
+  border: none;
+  padding: 0.75rem 1rem;
+  margin-right: 0.5rem;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+}
+
+.nav-tabs .nav-link:hover {
+  color: #3b82f6;
+  border-color: transparent;
+}
+
+.nav-tabs .nav-link.active {
+  color: #3b82f6;
+  border-bottom: 2px solid #3b82f6;
+  background-color: transparent;
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  .mentor-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .mentor-avatar {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+  
+  .availability-grid {
+    grid-template-columns: 60px repeat(7, 1fr);
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .stat-card {
+    margin-bottom: 1rem;
+  }
+  
+  .session-actions {
+    flex-direction: column;
+  }
+  
+  .availability-grid {
+    grid-template-columns: 50px repeat(7, 1fr);
+    font-size: 0.75rem;
+  }
+  
+  .day-header, .time-header, .time-label {
+    padding: 0.5rem 0.25rem;
+  }
+}
+
+/* Mentor Dashboard Styles */
+.mentor-dashboard .dashboard-title {
+  font-weight: 700;
+  color: #1e3a8a;
+  margin-bottom: 1.5rem;
+}
+
+/* Stats Card Styling */
+.mentor-dashboard .stat-card {
+  border-radius: 0.5rem;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.mentor-dashboard .stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.mentor-dashboard .stat-card .card-body {
+  display: flex;
+  padding: 1.5rem;
+}
+
+.mentor-dashboard .stat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #f0f9ff;
+  color: #3498db;
+  font-size: 1.25rem;
+  margin-right: 1rem;
+}
+
+.mentor-dashboard .stat-info {
+  flex: 1;
+}
+
+.mentor-dashboard .stat-title {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin-bottom: 0.25rem;
+}
+
+.mentor-dashboard .stat-number {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+/* Sessions Tab Styling */
+.mentor-dashboard .sessions-tab-header {
+  background-color: #f8fafc;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 1rem 1.5rem;
+}
+
+.mentor-dashboard .sessions-tab-header h3 {
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.mentor-dashboard .sessions-table th {
+  background-color: #f8fafc;
+  color: #64748b;
+  font-weight: 600;
+  border-bottom-width: 1px;
+}
+
+.mentor-dashboard .sessions-table .student-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.mentor-dashboard .rating-stars {
+  color: #f59e0b;
+}
+
+.mentor-dashboard .review-card {
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease-in-out;
+}
+
+.mentor-dashboard .review-card:hover {
+  transform: translateY(-3px);
+}
+
+.mentor-dashboard .review-text {
+  color: #4b5563;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+/* Mentor Profile Styles */
+.mentor-profile-container {
+  padding: 2rem 0;
+}
+
+.mentor-profile-header {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.mentor-profile-card {
+  border: none;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.mentor-header-content {
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+}
+
+.mentor-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.mentor-info {
+  margin-left: 2rem;
+}
+
+.mentor-name {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+
+.mentor-title {
+  font-size: 1.125rem;
+  color: #64748b;
+  margin-bottom: 1rem;
+}
+
+.mentor-stats {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.mentor-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mentor-stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #3b82f6;
+}
+
+.mentor-stat-label {
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.mentor-price {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #10b981;
+  margin-bottom: 0.5rem;
+}
+
+.booking-card {
+  background-color: #f8fafc;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+}
+
+.time-slots {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+
+.time-slot {
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  border: 1px solid #cbd5e1;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.time-slot:hover {
+  border-color: #3b82f6;
+  background-color: #eff6ff;
+}
+
+.time-slot.selected {
+  background-color: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+}
+
+.time-slot.disabled {
+  background-color: #f1f5f9;
+  color: #94a3b8;
+  cursor: not-allowed;
+  border-color: #e2e8f0;
+}
+
+.mentor-section {
+  margin-bottom: 2rem;
+}
+
+.mentor-section-title {
+  color: #1e293b;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 0.5rem;
+}
+
+.tab-content-wrapper {
+  padding: 1.5rem;
+}
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.skill-tag {
+  background-color: #f1f5f9;
+  color: #64748b;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  display: inline-block;
+}
+
+.experience-item,
+.education-item {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.experience-item:last-child,
+.education-item:last-child {
+  border-bottom: none;
+}
+
+.experience-title,
+.education-degree {
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.25rem;
+}
+
+.experience-company,
+.education-institution {
+  font-size: 1rem;
+  color: #64748b;
+  margin-bottom: 0.25rem;
+}
+
+.experience-date,
+.education-date {
+  font-size: 0.875rem;
+  color: #94a3b8;
+  margin-bottom: 0.5rem;
+}
+
+.review-container {
+  margin-bottom: 2rem;
+}
+
+.review-rating {
+  margin-bottom: 0.5rem;
+}
+
+.review-name {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.review-date {
+  color: #94a3b8;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Availability Management */
+.availability-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.day-column {
+  border: 1px solid #e2e8f0;
+  border-radius: 0.375rem;
+  overflow: hidden;
+}
+
+.day-header {
+  padding: 0.75rem;
+  background-color: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+  font-weight: 600;
+  text-align: center;
+}
+
+.time-slots-list {
+  padding: 0.75rem;
+}
+
+.time-slot-item {
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.time-slot-input {
+  display: none;
+}
+
+.time-slot-label {
+  display: block;
+  padding: 0.5rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  font-size: 0.875rem;
+}
+
+.time-slot-input:checked + .time-slot-label {
+  background-color: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+}
+
+.time-slot-label:hover {
+  border-color: #3b82f6;
+  background-color: #eff6ff;
+} 
